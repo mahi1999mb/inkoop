@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Number Input Field</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body{
+			margin-bottom: 50%;
+		}
+		#numInput{
+			
+			height: 30px;
+			width: 100px;
+			
+		}
+		input[type=number]::-webkit-inner-spin-button,
+		input[type=number]::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+		input[type=number] {
+			-moz-appearance:textfield;
+		}
+		input[type=number]:invalid {
+			background-color: #ffcccc;
+		}
+		input[type=number]:valid {
+			background-color: #ccffcc;
+		}
+	</style>
+</head>
+<body><center>
+	<input type="number" id="numInput" name="numInput" required min="0" step="1" placeholder="enter a number">
+	<p id="output"></p>
+</center>
+	<script>
+		let input = document.getElementById("numInput");
+		let output = document.getElementById("output");
+		input.addEventListener("input", function() {
+			let num = Number(input.value);
+			if (num < 0) {
+				output.innerHTML = "Enter a positive value";
+			} else if (num % 2 === 0) {
+			let evenNums = [];
+				for (let i = 1; i <= 3; i++) {
+					
+					evenNums.push(`${num+=2}`);
+				}
+				output.innerHTML =  evenNums.join(", ");
+			} else {
+				let oddNums = [];
+				for (let i = 1; i <= 3; i++) {
+					
+					oddNums.push(`${num+=2}`);
+				}
+				output.innerHTML = oddNums.join(", ");
+			}
+		});
+	</script>
+</body>
+</html>
